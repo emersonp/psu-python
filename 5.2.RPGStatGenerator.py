@@ -1,6 +1,6 @@
 # Copyright (c) 2014 Parker Harris Emerson
 
-# Exercise 5.1 from Dawson's "Python Programming for the Absolute Beginner (3d)"
+# Exercise 5.2 from Dawson's "Python Programming for the Absolute Beginner (3d)"
 
 # INITIATE PROGRAM
 
@@ -40,17 +40,29 @@ while user_choice != 0:
   # ADD TO STAT
 
   if user_choice == 1:
-    stat_choice = 5
-    while not int(stat_choice) < 5 or int(stat_choice) > 0:
+    while True:
       print("\n\n\n\n\nWhich stat would you like to raise? You have", stats["POOL"],
         "points in your pool.")
       print("\t(1) Strength\n\t(2) Health\n\t(3) Wisdom\n\t(4) Dexterity")
-      stat_choice = int(input("\n\n"))
+      stat_choice = input("\n\n")
+      if not stat_choice.isdigit():
+        print("Please choose a valid number.")
+        continue
+      if int(stat_choice) > 4 or int(stat_choice) < 1:
+        print("Please choose a valid number.")
+        continue
+      stat_choice = int(stat_choice)
       stat_value = 100
-      while stat_value > stats["POOL"]:
-        stat_value = int(input("\nIncrease it by how much? "))
+      while True:
+        stat_value = input("\nIncrease it by how much? ")
+        if not stat_value.isdigit():
+          print("Please enter a numerical value.")
+          continue
+        stat_value = int(stat_value)
         if stat_value > stats["POOL"]:
-          print("You only have", stats["POOL"], "points to spend.")
+          print("You only have", stats["POOL"], "points to spend.\n")
+        elif stat_value < 1:
+          print("Please pick a positive integer.")
         else:
           stats["POOL"] -= stat_value
           if stat_choice == 1:
@@ -61,6 +73,7 @@ while user_choice != 0:
             stats["WIS"] += stat_value
           elif stat_choice == 4:
             stats["DEX"] += stat_value
+          break
       break
 
 
@@ -81,6 +94,7 @@ while user_choice != 0:
         else:
           stats["POOL"] += stat_value
           if stat_choice == 1:
+            #if stat_value
             stats["STR"] -= stat_value
           elif stat_choice == 2:
             stats["HEA"] -= stat_value
@@ -88,4 +102,5 @@ while user_choice != 0:
             stats["WIS"] -= stat_value
           elif stat_choice == 4:
             stats["DEX"] -= stat_value
+        stat_value = 0
       break

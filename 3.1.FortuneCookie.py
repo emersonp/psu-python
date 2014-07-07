@@ -1,4 +1,4 @@
-# Copyright (c) 2014 [Redacted]
+# Copyright (c) 2014 Parker Harris Emerson
 
 # Exercise 3.1 from Dawson's "Python Programming for the Absolute Beginner (3d)"
 
