@@ -78,6 +78,7 @@ while user_choice != 0:
 
 
   # SUBTRACT FROM STAT
+  # Not as much input validation as adding.
 
   if user_choice == 2:
     stat_choice = 5
