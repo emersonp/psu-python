@@ -18,20 +18,21 @@ def tree_depth(first_digit):
       second_digit = tuple[1]
       if [] == [(x,y) for x, y in edge_tuples if x == second_digit]:
         del_tuple = tuple
+        distance += 1
         if DEBUG:
           print("Edge Tuples:", edge_tuples)
         break
       else:
-        distance = tree_depth(second_digit)
+        distance += 1
   edge_tuples.discard(del_tuple)
-  return distance + 1
+
 
 print("\n\n\n")
 
 while len(edge_tuples) != 0:
   sample_tuple = random.sample(edge_tuples, 1)[0]
   distance = 0
-  distance = tree_depth(sample_tuple[0])
+  tree_depth(sample_tuple[0])
   print("Distance:", distance)
   if depth_index < distance:
     depth_index = distance
