@@ -7,7 +7,9 @@
 
 import operator
 
+# EDIT THIS HARDCODE FILE TO CHANGE INPUT TEXT
 text_file = open("Classwork_OriginalText.txt", "r")
+
 word_dictionary = {}
 total_para = 0
 total_sentence = 0
@@ -17,7 +19,11 @@ sentence_length = []
 word_length = []
 words_in_sentence = 0
 sentences_in_para = 0
+
 BLACK_LIST = ["the", "be", "to", "of", "and", "a", "in", "that", "have", "i", "in", "for", "not", "on", "with", "he", "as", "you", "do", "at", "is", "it", "this", "but", "his", "are", "or"]
+
+# Non-sentence-ending punctuation
+PUNCTUATION = ["$", ",", ";", ":", "/", "(", ")", "-"]
 
 def import_text(text_file):
   return text_file.read()
@@ -54,6 +60,8 @@ for para in para_array:
       words_in_sentence += 1
       word_length.append(len(word))
       input_word = word.lower()
+      for punct in PUNCTUATION:
+        input_word.replace(punct, "")
       if input_word in word_dictionary:
         word_dictionary[input_word] += 1
       else:
@@ -82,4 +90,6 @@ print("Five most used words:", sorted_word_length[:5])
 print("Five most used words (after blacklist):", bl_sorted_word_length[:5])
 print("Average Word Length:", format(float(sum(word_length) / len(word_length)), ".2f"))
 
+
+print("\n" * 10)
 text_file.close()
