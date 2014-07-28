@@ -21,7 +21,7 @@ class DieRoller(Frame):
     self.display.grid(row = 0, column = 0, columnspan = 5, sticky = E + W)
     # Roll d4
     self.rolld4 = Button(self, text = "Roll d4", command = self.do_roll_d4)
-    self.rolld4.grid(row = 1, column = 0, sticky = E + W)
+    self.rolld4.grid(row = 1, rowspan = 2, column = 0, sticky = E + W)
     # Roll d6
     self.rolld6 = Button(self, text = "Roll d6", command = self.do_roll_d6)
     self.rolld6.grid(row = 1, column = 1, sticky = E + W)
@@ -37,19 +37,19 @@ class DieRoller(Frame):
 
     # Number of Dice
     self.num_lbl = Label(self, text = "Num Dice:")
-    self.num_lbl.grid(row = 2, column = 0, sticky = W)
+    self.num_lbl.grid(row = 3, column = 0, sticky = W)
 
     self.num_display = Label(self, text = numdie)
-    self.num_display.grid(row = 2, column = 2, columnspan = 2, sticky = E + W)
+    self.num_display.grid(row = 3, column = 2, columnspan = 2, sticky = E + W)
 
     self.bttn_minus_die = Button(self, text = "<<", command = self.do_minus_die)
-    self.bttn_minus_die.grid(row = 2, column = 1, sticky = E + W)
+    self.bttn_minus_die.grid(row = 3, column = 1, sticky = E + W)
     self.bttn_plus_die = Button(self, text = ">>", command = self.do_plus_die)
-    self.bttn_plus_die.grid(row = 2, column = 4, sticky = E + W)
+    self.bttn_plus_die.grid(row = 3, column = 4, sticky = E + W)
 
     # Quit
     self.quit = Button(self, text = "Quit", command = self.quit)
-    self.quit.grid(row = 3, column = 0, columnspan = 5, sticky = E + W)
+    self.quit.grid(row = 4, column = 0, columnspan = 5, sticky = E + W)
 
   def do_roll_d4(self):
     roll = 0

@@ -76,9 +76,9 @@ if player1_coins > player2_coins:
 elif player2_coins > player1_coins:
   print("\nPlayer 2 wins!")
 else:
-  if player1_coins.count("H") > player2_coins.count("H"):
+  if player1_prisoners.count("H") > player2_prisoners.count("H"):
     print("\nPlayer 1 wins with prisoners!")
-  elif player1_coins.count("H") < player2_coins.count("H"):
+  elif player1_prisoners.count("H") < player2_prisoners.count("H"):
     print("\nPlayer 2 wins with prisoners!")
   else:
     print("\nA tie!")
