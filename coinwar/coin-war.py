@@ -11,11 +11,11 @@ player1_prisoners = ""
 player2_prisoners = ""
 
 # Generate Values from Testing Files
-TESTING = False
+TESTING = True
 
 # Pull Values from Testing Files
 if TESTING:
-  input_file = open("test-1.txt", "r")
+  input_file = open("test-8.txt", "r")
   player1_coins = input_file.readline().rstrip()
   player2_coins = input_file.readline().rstrip()
   expected_winner = input_file.readline().rstrip()
