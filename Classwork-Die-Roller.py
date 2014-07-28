@@ -7,6 +7,9 @@ from tkinter.font import Font
 
 class DieRoller(Frame):
 
+  global numdie
+  numdie = 1
+
   def __init__(self, root):
     super().__init__(root)
 
@@ -36,31 +39,59 @@ class DieRoller(Frame):
     self.num_lbl = Label(self, text = "Num Dice:")
     self.num_lbl.grid(row = 2, column = 0, sticky = W)
 
+    self.num_display = Label(self, text = numdie)
+    self.num_display.grid(row = 2, column = 2, columnspan = 2, sticky = E + W)
 
+    self.bttn_minus_die = Button(self, text = "<<", command = self.do_minus_die)
+    self.bttn_minus_die.grid(row = 2, column = 1, sticky = E + W)
+    self.bttn_plus_die = Button(self, text = ">>", command = self.do_plus_die)
+    self.bttn_plus_die.grid(row = 2, column = 4, sticky = E + W)
 
     # Quit
     self.quit = Button(self, text = "Quit", command = self.quit)
     self.quit.grid(row = 3, column = 0, columnspan = 5, sticky = E + W)
 
   def do_roll_d4(self):
-    roll = randrange(4) + 1
+    roll = 0
+    for x in range(numdie):
+      roll += randrange(4) + 1
     self.display.configure(text = str(roll))
 
   def do_roll_d6(self):
-    roll = randrange(6) + 1
+    roll = 0
+    for x in range(numdie):
+      roll += randrange(6) + 1
     self.display.configure(text = str(roll))
 
   def do_roll_d8(self):
-    roll = randrange(8) + 1
+    roll = 0
+    for x in range(numdie):
+      roll += randrange(8) + 1
     self.display.configure(text = str(roll))
 
   def do_roll_d10(self):
-    roll = randrange(10) + 1
+    roll = 0
+    for x in range(numdie):
+      roll += randrange(10) + 1
     self.display.configure(text = str(roll))
 
   def do_roll_d20(self):
-    roll = randrange(20) + 1
+    roll = 0
+    for x in range(numdie):
+      roll += randrange(20) + 1
     self.display.configure(text = str(roll))
+
+  def do_plus_die(self):
+    global numdie
+    numdie += 1
+    self.num_display.configure(text = numdie)
+
+  def do_minus_die(self):
+    global numdie
+    numdie -= 1
+    if numdie < 1:
+      numdie = 1
+    self.num_display.configure(text = numdie)
 
   def quit(self):
     sys.exit()
