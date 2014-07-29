@@ -21,13 +21,13 @@ class DieRoller(Frame):
     self.display.grid(row = 0, column = 0, columnspan = 5, sticky = E + W)
     # Roll d4
     self.rolld4 = Button(self, text = "Roll d4", command = self.do_roll_d4)
-    self.rolld4.grid(row = 1, rowspan = 2, column = 0, sticky = E + W)
+    self.rolld4.grid(row = 1, column = 0, sticky = E + W)
     # Roll d6
     self.rolld6 = Button(self, text = "Roll d6", command = self.do_roll_d6)
     self.rolld6.grid(row = 1, column = 1, sticky = E + W)
     # Roll d8
     self.rolld8 = Button(self, text = "Roll d8", command = self.do_roll_d8)
-    self.rolld8.grid(row = 1, column = 2, sticky = E + W)
+    self.rolld8.grid(row = 2, column = 2, sticky = E + W)
     # Roll d10
     self.rolld10 = Button(self, text = "Roll d10", command = self.do_roll_d10)
     self.rolld10.grid(row = 1, column = 3, sticky = E + W)
