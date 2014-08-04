@@ -10,6 +10,7 @@ class CoinWar(Frame):
 
     # Set Up Widgets
     self.grid()
+
     self.player1_coins = ""
     self.player2_coins = ""
     self.player1_prisoners = ""
@@ -45,6 +46,10 @@ class CoinWar(Frame):
     self.game_display.grid(row = 2, column = 0, columnspan = 8, stick = E + W)
 
   def do_play(self):
+    def update_text_status(self):
+      self.game_play_text += "\nPlayer 1 Coins: " + self.player1_coins +  "\tP: " + self.player1_prisoners
+      self.game_play_text += "\nPlayer 2 Coins: " + self.player2_coins +  "\tP: " + self.player2_prisoners
+
     # Reset Variables
     self.player1_coins = ""
     self.player2_coins = ""
@@ -66,21 +71,14 @@ class CoinWar(Frame):
     # If No Text Entered, Randomly Generate Heads/Tails
     if len(self.player1_coins) == 0:
       for i in range(5):
-        if random.randrange(2) > 0:
-          self.player1_coins += "H"
-        else:
-          self.player1_coins += "T"
+        self.player1_coins += random.choice(["H", "T"])
     if len(self.player2_coins) == 0:
       for i in range(5):
-        if random.randrange(2) > 0:
-          self.player2_coins += "H"
-        else:
-          self.player2_coins += "T"
+        self.player2_coins += random.choice(["H", "T"])
 
     # Play Game
     while len(self.player1_coins) > 0 and len(self.player2_coins) > 0:
-      self.game_play_text += "\nPlayer 1 Coins: " + self.player1_coins +  "\tP: " + self.player1_prisoners
-      self.game_play_text += "\nPlayer 2 Coins: " + self.player2_coins +  "\tP: " + self.player2_prisoners
+      update_text_status(self)
 
       # If Player First Coins are the Same...
       if self.player1_coins[0] == self.player2_coins[0]:
@@ -114,8 +112,7 @@ class CoinWar(Frame):
     self.game_display.configure(text = self.game_play_text)
 
     # Evaluate For Win Conditions
-    self.game_play_text += "\nPlayer 1 Coins: " + self.player1_coins + "\tP:" + self.player1_prisoners
-    self.game_play_text += "\nPlayer 2 Coins: " + self.player2_coins + "\tP:" + self.player2_prisoners
+    update_text_status(self)
     if self.player1_coins > self.player2_coins:
       self.game_play_text += "\nPlayer 1 wins!"
     elif self.player2_coins > self.player1_coins:
