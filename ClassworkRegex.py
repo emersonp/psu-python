@@ -1,0 +1,15 @@
+import re
+regex = re.compile('(a*)(b*)(a+)')
+result1 = regex.match('abc')
+result2 = regex.match('ba')
+result3 = regex.match('bbb')
+
+print(result1.group(0))
+print(result1.group(1))
+print(result1.group(2))
+print(result2.group(0))
+print(result2.group(1))
+print(result2.group(2))
+print(result3.group(0))
+print(result3.group(1))
+print(result3.group(2))
